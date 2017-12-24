@@ -219,6 +219,9 @@
 }
 
 @media screen and (max-width:768px) {
+  .about{
+    overflow-x: hidden;
+  }
   .box-about3::before {
     width: 103px;
     left: 303px;
@@ -227,7 +230,7 @@
 
   }
   .parallax h2 {
-      top: 0px;
+      top: 27px;
   }
   .parallax {
     min-height: 285px;

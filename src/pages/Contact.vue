@@ -137,17 +137,17 @@ export default {
   },
   methods: {
     address () {
-      axios.get('http://127.0.0.1:8000/api/index/address/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/address/').then((response) => {
         this.addresses = response.data
       })
     },
     phone () {
-      axios.get('http://127.0.0.1:8000/api/index/phone/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/phone/').then((response) => {
         this.phones = response.data
       })
     },
     socialNetwork () {
-      axios.get('http://127.0.0.1:8000/api/index/social_network/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/social_network/').then((response) => {
         this.socialNetworks = response.data
       })
     },
@@ -155,7 +155,7 @@ export default {
       var self = this
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/api/contact/contact_us/',
+        url: 'http://144.76.233.153:8000/api/contact/contact_us/',
         data: JSON.stringify(this.comment),
         headers: {'Content-Type': 'application/json',
           'Accept': 'application/json'
