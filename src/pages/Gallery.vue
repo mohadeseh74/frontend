@@ -16,7 +16,7 @@
 <h2>پروژه های ما</h2>
 <div class="container">
   <div class="col-md-4 col-sm-6 col-xs-12 img-boxes" v-for="gallery in galleries">
-    <lightbox :src="gallery.image" album="a">
+    <lightbox :src="gallery.image" album="a" :caption="gallery.title" >
      <div class=" over-box">
          <img :src="gallery.image" class="gallery-img">
        <div class="overlay">
@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     gallery () {
-      axios.get('http://127.0.0.1:8000/api/gallery/gallery/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/gallery/gallery/').then((response) => {
         this.galleries = response.data
       })
     }

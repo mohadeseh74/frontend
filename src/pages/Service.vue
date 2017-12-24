@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     ServiceDetail () {
-      axios.get('http://127.0.0.1:8000/api/service/service/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/service/service/').then((response) => {
         this.details = response.data
       })
     }

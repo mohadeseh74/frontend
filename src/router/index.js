@@ -42,6 +42,10 @@ export default new Router({
     {
       path: '/404',
       component: PageNotFound
+    },
+    {
+      path: '*',
+      redirect: '/404'
     }
   ]
 })

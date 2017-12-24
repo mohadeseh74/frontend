@@ -437,7 +437,9 @@ nav {
 .links li a:focus {
   color: #78abf1;
 }
-
+.desk{
+      z-index: 101;
+}
 .logo-shape::before {
   position: absolute;
   content: '';
@@ -673,6 +675,7 @@ margin: auto;
   }
   .desk {
     display: none;
+
   }
   .bottomMenu nav {
     display: none !important;

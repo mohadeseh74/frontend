@@ -1,4 +1,4 @@
-<template>
+144.76.233.153:8000<template>
 <div>
   <loading-screen v-if="isLoading"></loading-screen>
   <nav class="col-sm-12 no-padding desk">
@@ -8,7 +8,7 @@
           ۰۲۱۶۶۴۱۵۸۹۶
         </li>
         <li>
-          <a href="tel:02166415896"><i class="fa fa-phone" aria-hidden="true"></i></a>
+          <a href="tel:02188523686"><i class="fa fa-phone" aria-hidden="true"></i></a>
         </li>
         <li>
           <a :href="socialNetwork.telegram"><i class="fa fa-telegram" aria-hidden="true"></i></a>
@@ -21,8 +21,8 @@
     <div class="col-sm-2 col-md-4 logo-shape no-padding">
       <div class="logo-holder">
         <a href="#">
-          <img src="../static/img/LOGO1.png" class="part-1-logo">
-          <img src="../static/img/233.png" class="part-2-logo">
+          <img src="static/img/LOGO1.png" class="part-1-logo">
+          <img src="static/img/233.png" class="part-2-logo">
         </a>
       </div>
     </div>
@@ -53,7 +53,7 @@
           ۰۲۱۶۶۴۱۵۸۹۶
         </li>
         <li>
-          <a href="tel:02166415896"><i class="fa fa-phone" aria-hidden="true"></i></a>
+          <a href="tel:02188523686"><i class="fa fa-phone" aria-hidden="true"></i></a>
         </li>
         <li>
           <a :href="socialNetwork.telegram"><i class="fa fa-telegram" aria-hidden="true"></i></a>
@@ -66,7 +66,7 @@
     <div class="col-sm-2 col-md-4 logo-shape no-padding">
       <div class="logo-holder">
         <a href="#">
-        <img src="../static/img/LOGO1.png" class="part-1-logo3">
+        <img src="static/img/LOGO1.png" class="part-1-logo3">
         </a>
       </div>
     </div>
@@ -116,7 +116,7 @@
       <div class="col-sm-5 social">
         <ul v-for="socialNetwork in socialNetworks">
           <li>
-            <a href="tel:02166415896"><i class="fa fa-phone" aria-hidden="true"></i></a>
+            <a href="tel:02188523686"><i class="fa fa-phone" aria-hidden="true"></i></a>
           </li>
           <li>
             <a :href="socialNetwork.telegram"><i class="fa fa-telegram" aria-hidden="true"></i></a>
@@ -125,6 +125,10 @@
             <a :href="socialNetwork.instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
           </li>
         </ul>
+        <div class="logo-3">
+          <img src="static/img/LOGO1.png" class="part-1-logo">
+          <img src="static/img/233.png" class="part-2-logo">
+        </div>
       </div>
     </nav>
     <main id="panel">
@@ -137,7 +141,7 @@
   <span></span>
 </div>
           </button>
-          <img src="../static/img/LOGO (2).png" alt="">
+          <img src="static/img/LOGO (2).png" alt="">
         </div>
       </header>
     </main>
@@ -257,22 +261,22 @@ export default {
       console.log('slideoutOpen')
     },
     openinghour () {
-      axios.get('http://127.0.0.1:8000/api/index/opening_hour/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/opening_hour/').then((response) => {
         this.openinghours = response.data
       })
     },
     socialNetwork () {
-      axios.get('http://127.0.0.1:8000/api/index/social_network/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/social_network/').then((response) => {
         this.socialNetworks = response.data
       })
     },
     address () {
-      axios.get('http://127.0.0.1:8000/api/index/address/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/address/').then((response) => {
         this.addresses = response.data
       })
     },
     phone () {
-      axios.get('http://127.0.0.1:8000/api/index/phone/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/phone/').then((response) => {
         this.phones = response.data
       })
     }

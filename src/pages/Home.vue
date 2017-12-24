@@ -18,59 +18,59 @@
     <div class="container box-quote">
       <form method="post" @submit.prevent="createRequest">
         <div class="box-1">
+          <div class="col-sm-6 col-md-4 col-xs-12 order-one box1-1">
+            <label for="">کشور و شهر مبدا</label>
+            <input type="text" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('sender') }" name="sender"  value=""  v-model="request.sender">
+          <div  v-show="errors.has('sender')" class="help is-danger">{{ errors.first('sender') }}</div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xs-12 order-two box1-1">
+            <label for="">کشور و شهر مقصد</label>
+                <input type="text" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('recipient') }" name="recipient"  value=""  v-model="request.recipient">
+                    <div  v-show="errors.has('recipient')" class="help is-danger">{{ errors.first('recipient') }}</div>
+          </div>
+
           <div class="col-sm-6 col-xs-12 col-md-4 order-three box1-1">
             <label for="">نوع حمل و نقل</label>
-            <div class="select-diiv">
-            <select v-validate="'required'" data-vv-delay="500" :class="{'input': true, 'is-danger': errors.has('method') }"  name="method" aria-required="true" aria-invalid="false" v-model="request.method">
-              <option value="" disabled></option>
-              <option v-for="service in services" :value="service.id" >{{ service.name }}</option>
-          </select>
-        </div>
+            <input type="text" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('method') }" name="method"  value=""  v-model="request.method">
                     <div  v-show="errors.has('method')" class="help is-danger">{{ errors.first('method') }}</div>
         </div>
-          <div class="col-sm-6 col-md-4 col-xs-12 order-two box1-1">
-            <label for="">شهر مقصد</label>
-            <div class="select-diiv">
-            <select v-validate="'required'" data-vv-delay="500" :class="{'input': true, 'is-danger': errors.has('recipient_country') }"  name="recipient_country" aria-required="true" aria-invalid="false" v-model="request.recipient_country">
-              <option value="" disabled></option>
-            <option  v-for="country in countries" :value="country.id" v-if="request.sender_country !== country.id">{{ country.country }}</option>
-
-          </select>
+          <div class="col-sm-6 col-xs-12 col-md-4 order-4 box1-1">
+            <label for="">نوع کالا</label>
+            <input type="text" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('goods_type') }" name="goods_type"  value=""  v-model="request.goods_type">
+                    <div  v-show="errors.has('goods_type')" class="help is-danger">{{ errors.first('goods_type') }}</div>
         </div>
-                    <div  v-show="errors.has('recipient_country')" class="help is-danger">{{ errors.first('recipient_country') }}</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-xs-12 order-one box1-1">
-            <label for="">شهر مبدا</label>
-              <div class="select-diiv">
-            <select v-validate="'required'" data-vv-delay="500" :class="{'input': true, 'is-danger': errors.has('sender_country') }"  name="sender_country" aria-required="true" aria-invalid="false"  class=""  v-model="request.sender_country">
-              <option value="" disabled></option>
-            <option  v-for="country in countries" :value="country.id" >{{ country.country }}</option>
-          </select>
-        </div>
-          <div  v-show="errors.has('sender_country')" class="help is-danger">{{ errors.first('sender_country') }}</div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-xs-12 order-4 box1-1">
+        <div class="col-sm-6 col-xs-12 col-md-4 order-5 box1-1">
+          <label for="">وزن تقریبی</label>
+          <input type="text" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('weight') }" name="weight"  value=""  v-model="request.weight">
+                  <div  v-show="errors.has('weight')" class="help is-danger">{{ errors.first('weight') }}</div>
+      </div>
+      <div class="col-sm-6 col-xs-12 col-md-4 order-6 box1-1">
+        <label for="">ابعاد تقریبی کالا</label>
+        <input type="text" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('dimentions') }" name="dimentions"  value=""  v-model="request.dimentions">
+                <div  v-show="errors.has('dimentions')" class="help is-danger">{{ errors.first('dimentions') }}</div>
+    </div>
+          <div class="col-sm-6 col-md-4 col-xs-12 order-7 box1-1">
             <label for="">نام</label>
-            <input type="text" v-validate="'required|first_name'" :class="{'input': true, 'is-danger': errors.has('first_name') }" data-vv-delay="1000" name="first_name" value="" v-model="request.first_name">
+            <input type="text" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('first_name') }" data-vv-delay="1000" name="first_name" value="" v-model="request.first_name">
             <div v-show="errors.has('first_name')" class="help is-danger">{{ errors.first('first_name') }}</div>
           </div>
-          <div class="col-sm-6 col-md-4 col-xs-12 order-5 box1-1">
+          <div class="col-sm-6 col-md-4 col-xs-12 order-8 box1-1">
             <label for="">نام خانوادگی</label>
-            <input type="text" v-validate="'required|last_name'" :class="{'input': true, 'is-danger': errors.has('last_name') }" data-vv-delay="1000" name="last_name" value="" v-model="request.last_name">
+            <input type="text" v-validate="'required'" :class="{'input': true, 'is-danger': errors.has('last_name') }" data-vv-delay="1000" name="last_name" value="" v-model="request.last_name">
             <div v-show="errors.has('last_name')" class="help is-danger">{{ errors.first('last_name') }}</div>
           </div>
-          <div class="col-sm-6 col-md-4 col-xs-12 order-6 box1-1">
+          <div class="col-sm-6 col-md-4 col-xs-12 order-9 box1-1">
             <label for="">ایمیل</label>
             <input type="email" v-validate="'email'" :class="{'input': true, 'is-danger': errors.has('email') }" data-vv-delay="1000" name="email" value="" v-model="request.email">
               <div v-show="errors.has('email')" class="help is-danger">{{ errors.first('email') }}</div>
           </div>
-          <div class="col-sm-6 col-md-4 col-xs-12 order-7 box1-1">
+          <div class="col-sm-6 col-md-4 col-xs-12 order-10 box1-1">
             <label for="">شماره موبایل</label>
             <input type="number" v-validate="'required|numeric|min:8|max:11'" data-vv-delay="500" :class="{'input': true, 'is-danger': errors.has('phone_number') }"  name="phone_number" value="" v-model="request.phone_number">
             <div v-show="errors.has('phone_number')" class="help is-danger">{{ errors.first('phone_number') }}</div>
           </div>
-          <div class="col-sm-6 col-md-4 col-xs-12 order-8 box1-2">
-            <input type="submit" name="" value="درخواست سفارش">
+          <div class="col-sm-6 col-md-4 col-xs-12 order-11 box1-2">
+            <input type="submit" name="" value="ثبت سفارش">
           </div>
         </div>
       </form>
@@ -83,7 +83,7 @@
   <div class="col-sm-12 no-padding services">
     <h1>خدمات ما</h1>
     <div class="container box-services">
-      <a :href="'/Service'" class="service-1 col-sm-6 col-xs-12 col-md-3" v-for="service in services" :key="service.name">
+      <a :href="'/Service'" class="service-1 col-sm-6 col-xs-12 col-md-2" v-for="service in services" :key="service.name">
         <div class=" over-box">
           <img :src="service.image" alt="" class="image">
           <div class="overlay">
@@ -116,13 +116,6 @@
             <div id="tab-content2" class="tab-content animated fadeIn">
               ی طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی
               دستاو
-            </div>
-          </li>
-          <li>
-            <input type="radio" name="tabs" id="tab3">
-            <label for="tab3">سیبسی</label>
-            <div id="tab-content3" class="tab-content animated fadeIn">
-              راحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت
             </div>
           </li>
         </ul>
@@ -186,7 +179,10 @@ export default {
       title: 'خانه',
       swiperOption: {
         pagination: '.swiper-pagination',
-        paginationClickable: true
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        loop: true
       },
       options: {
         useEasing: true,
@@ -207,8 +203,11 @@ export default {
         last_name: '',
         email: '',
         phone_number: '',
-        sender_country: '',
-        recipient_country: '',
+        sender: '',
+        dimentions: '',
+        weight: '',
+        goods_type: '',
+        recipient: '',
         method: ''
       },
       requestHide: true,
@@ -232,34 +231,28 @@ export default {
     this.slider()
     this.ourService()
     this.statistic()
-    this.CountryList()
   },
   methods: {
     slider () {
-      axios.get('http://127.0.0.1:8000/api/index/slider/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/slider/').then((response) => {
         this.slides = response.data
       })
     },
     ourService () {
-      axios.get('http://127.0.0.1:8000/api/service/our_service/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/service/our_service/').then((response) => {
         this.services = response.data
       })
     },
     statistic () {
-      axios.get('http://127.0.0.1:8000/api/index/statistic/').then((response) => {
+      axios.get('http://144.76.233.153:8000/api/index/statistic/').then((response) => {
         this.statistics = response.data
-      })
-    },
-    CountryList () {
-      axios.get('http://127.0.0.1:8000/api/request/country/').then((response) => {
-        this.countries = response.data
       })
     },
     createRequest () {
       var self = this
       axios({
         method: 'post',
-        url: 'http://127.0.0.1:8000/api/request/request/',
+        url: 'http://144.76.233.153:8000/api/request/request/',
         data: JSON.stringify(this.request),
         headers: {'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -271,8 +264,11 @@ export default {
             last_name: '',
             email: '',
             phone_number: '',
-            sender_country: '',
-            recipient_country: '',
+            sender: '',
+            dimentions: '',
+            weight: '',
+            goods_type: '',
+            recipient: '',
             method: ''
           }
           self.requestHide = false
@@ -297,9 +293,12 @@ export default {
         first_name: 'نام',
         last_name: 'نام خانوادگی',
         phone_number: 'شماره تلفن',
-        sender_country: 'شهر مبدا',
-        recipient_country: 'شهر مقصد',
-        method: 'نوع سرویس'
+        sender: 'شهر مبدا',
+        recipient: 'شهر مقصد',
+        method: 'نوع حمل و نقل',
+        dimentions: 'ابعاد تقریبی کالا',
+        weight: 'وزن تقریبی کالا',
+        goods_type: 'نوع کالا'
       }
     })
 

@@ -1,7 +1,7 @@
 
 $(document).scroll(function() {
-  var y = $(this).scrollTop()-100;
-  if (y > 250) {
+  var y = $(this).scrollTop();
+  if (y > 75) {
     $('.bottomMenu').slideDown();
   } else {
     $('.bottomMenu').slideUp();
