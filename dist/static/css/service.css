@@ -21,6 +21,7 @@
   left: -9999px;
   right: -9999px;
   margin: auto;
+  cursor: default;
   top: 95px;
   width: 100%;
   overflow: hidden;
@@ -135,6 +136,7 @@
 .advantages {
   margin-top: 30px;
   text-align: center;
+  cursor: default;
 }
 
 .advantages h3 {

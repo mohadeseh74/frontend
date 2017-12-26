@@ -21,6 +21,7 @@
 .parallax h2 {
   position: absolute;
   color: #fff;
+  cursor: default;
   /* top: 50%; */
   /* margin: 62px auto; */
   left: -9999px;
@@ -89,7 +90,9 @@
   top: 4px;
   left: 4px;
 }
-
+.about-tik{
+  text-align: right;
+}
 .box-2-about img {
   width: 100%;
 }

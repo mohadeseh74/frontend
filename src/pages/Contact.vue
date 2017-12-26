@@ -52,7 +52,7 @@
               <div v-show="errors.has('name')" class="help is-danger">{{ errors.first('name') }}</div>
             </div>
             <div class="col-sm-6 content-pad-r fl-11" >
-              <input type="number" v-validate="''" data-vv-delay="500" :class="{'input': true, 'is-danger': errors.has('phone_number') }"  name="phone_number" value="" class="inp-inf" placeholder="شماره موبایل" v-model="comment.phone_number">
+              <input type="number" v-validate="'numeric|min:8|max:11'" data-vv-delay="500" :class="{'input': true, 'is-danger': errors.has('phone_number') }"  name="phone_number" value="" class="inp-inf" placeholder="شماره موبایل" v-model="comment.phone_number">
               <div v-show="errors.has('phone_number')" class="help is-danger">{{ errors.first('phone_number') }}</div>
             </div>
           </div>
@@ -74,10 +74,11 @@
             </div>
           </div>
         </form>
-        <div class="req-comment">
-          <p v-if="commentSuccess">کامنت شما با موفقیت ثبت شد و منتظر تایید است</p>
-          <p v-if="commentFail">fuck off</p>
+        <div class="clearfix">
         </div>
+        <div class="app-notif" v-bind:class="{ 'displaynotif' : contactHide }" v-text="contactCode">
+        </div>
+        <p class="eror-msg" v-if="commentFail">متاسفانه کامنت شما ثبت نشد</p>
       </div>
     </div>
   </div>
@@ -113,6 +114,8 @@ export default {
         description: '',
         phone_number: null
       },
+      contactHide: true,
+      contactCode: '',
       commentSuccess: false,
       commentFail: false
     }
@@ -168,10 +171,21 @@ export default {
             email: '',
             phone_number: null
           }
+          self.contactHide = false
+          self.contactCode = 'با تشکر از شما'
+          self.$validator.pause()
+          setTimeout(() => {
+            self.$validator.resume()
+          }, 6000)
           self.commentSuccess = true
+          self.commentFail = false
         })
         .catch(function (error) {
           if (error) {
+            self.$validator.pause()
+            setTimeout(() => {
+              self.$validator.resume()
+            }, 6000)
             self.commentFail = true
             self.errors.clear()
           }

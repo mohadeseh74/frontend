@@ -10,6 +10,67 @@ h2, h1{
   font-weight: 100 !important;
 }
 
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.modal-container {
+  width: 40%;
+  text-align: center;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-header {
+  border-bottom: 0px;
+}
+
+
+.modal-header h3 {
+  margin-top: 0;
+  color: #42b983;
+}
+
+.modal-body {
+  margin: 20px 0;
+}
+.body-paragraph p{
+  font-size: 17px;
+}
+
+.modal-footer {
+  border-top: 0px;
+}
+
+.modal-footer p {
+  text-align: center;
+}
+.modal-default-button {
+  border: 0px;
+  padding: 13px 21px;
+  color: #fff;
+  background-color: #89cddf;
+  font-weight: 800;
+  font-size: 18px;
+}
 #loading
 {
   background-color: #fff;
@@ -402,7 +463,7 @@ nav {
 
 .bottomMenu {
   width: 100%;
-  height: 85px;
+  height: 86px;
   border-bottom: 1px solid rgba(202, 202, 202, 0.36);
   position: fixed;
   top: 0px;
@@ -520,7 +581,7 @@ nav {
 }
 .footer {
       padding-right: 22px;
-  height: 185px;
+  height: 215px;
   background-color: #363d41;
 }
 
@@ -581,11 +642,13 @@ padding-left: 0px;
 }
 @media screen and (max-width:1200px) {
   .footer{
-    height: 271px;
+    height: 309px;
+
   }
   .quick{
     text-align: center;
   }
+
 }
 @media screen and (max-width:1065px) {
   .links li {
@@ -651,6 +714,16 @@ padding-left: 0px;
 
 }
 @media screen and (max-width:768px) {
+  .logo-3{
+    position: relative;
+top: 60px;
+  }
+  .logo-3 .part-1-logo{
+width: 81px;
+  }
+  .logo-3 .part-2-logo{
+width: 166px;
+  }
   input, textarea, select{
     font-size: 16px !important;
   }
@@ -703,13 +776,13 @@ margin: auto;
 font-size: 30px;
     }
   .footer{
-    height: 448px;
+    height: 495px;
         padding-top: 4px;
         text-align: center;
   }
 }
 @media screen and (max-width:449px) {
 .footer{
-  height: 469px;
+  height: 520px;
 }
 }
