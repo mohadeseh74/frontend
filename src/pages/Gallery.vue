@@ -16,7 +16,7 @@
 <h2>پروژه های ما</h2>
 <div class="container">
   <div class="col-md-4 col-sm-6 col-xs-12 img-boxes" v-for="gallery in galleries">
-    <lightbox :src="gallery.image" album="a" :caption="gallery.title" >
+    <lightbox :src="gallery.image" album="a" :caption="gallery.caption" >
      <div class=" over-box">
          <img :src="gallery.image" class="gallery-img">
        <div class="overlay">

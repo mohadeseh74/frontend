@@ -58,8 +58,8 @@ top: 95px;
   text-align: right;
 }
 .partition {
-  min-height: 92px;
-  line-height: 86px;
+  max-height: 111px;
+      line-height: 46px;
   background: #f2f3f8;
 }
 
@@ -171,6 +171,26 @@ input.is-danger, select.is-danger, textarea.is-danger{
 
 .help{
   color: red;
+}
+.displaynotif{
+  display: none;
+}
+.app-notif{
+  clear: both;
+      color: #fff;
+      background: #20a520;
+      font-size: 18px;
+      margin: 12px 30px 1px;
+      padding: 12px;
+      text-align: center;
+}
+.eror-msg{
+  background: red;
+color: #fff;
+margin: 12px 30px 0px;
+padding: 12px;
+font-size: 17px;
+text-align: center;
 }
 @media screen and (max-width:992px) {
   .contact-form{

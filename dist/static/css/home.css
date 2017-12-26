@@ -1,9 +1,10 @@
 .slider {
-  width: 100%
+  width: 100%;
 }
 
 .swiper-slide img {
   width: 100%;
+
 }
 
 .quote {
@@ -118,7 +119,16 @@ text-overflow: '';
 .order-8{
   order: 8;
 }
-.order-8 input{
+.order-9{
+  order: 9;
+}
+.order-10{
+  order: 10;
+}
+.order-11{
+  order: 11;
+}
+.order-11 input{
   font-weight: 500;
 }
 
@@ -156,6 +166,7 @@ text-overflow: '';
   display: block;
   position: relative;
   overflow: hidden;
+  width: 20%;
 }
 
 .service-1 img {
@@ -224,7 +235,7 @@ text-overflow: '';
 
 .tabs {
   width: 100%;
-  min-height: 190px;
+  min-height: 230px;
   float: none;
   list-style: none;
   position: relative;
@@ -234,7 +245,7 @@ text-overflow: '';
 
 .tabs li {
   float: right;
-  width: 33%;
+  width: 50%;
 
 }
 
@@ -343,7 +354,7 @@ overflow: hidden;
 .img-box-sta img{
   position: absolute;
   top: 45%;
-  left: 45%;
+  left: 50%;
   transform: translate(-50% ,-50%);
 }
 .requ-notif{
@@ -363,11 +374,26 @@ input.is-danger, select.is-danger, textarea.is-danger{
 .help{
   color: red;
 }
-@media screen and (max-width:991px) {
+@media screen and (min-width:1800px) {
+  .swiper-slide img{
+    min-height: 900px;
+    max-height: 900px;
+  }
+}
+@media screen and (max-width:1200px) {
+  .tabs label{
+    font-size: 15px;
+  }
+  [id^=tab]:checked+label, [id^=tab]+label{
+    font-size: 15px;
+  }
+}
+@media screen and (max-width:992px) {
   .service-1 {
     overflow: hidden;
     max-height: 300px;
     padding: 25px 12.5px;
+    width: 50%;
   }
   .overlay{
     height: 276px;
@@ -385,6 +411,7 @@ input.is-danger, select.is-danger, textarea.is-danger{
 }
 .service-1{
   max-height: 100%;
+  width: 100%;
 }
 .service-1 img{
    -webkit-transform: none;

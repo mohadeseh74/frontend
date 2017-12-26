@@ -5,7 +5,7 @@
     <div class="col-sm-5 col-md-4 social">
       <ul v-for="socialNetwork in socialNetworks">
         <li>
-          ۰۲۱۶۶۴۱۵۸۹۶
+          ۰۲۱۸۸۷۳۸۷۳
         </li>
         <li>
           <a href="tel:02188523686"><i class="fa fa-phone" aria-hidden="true"></i></a>
@@ -50,7 +50,7 @@
     <div class="col-sm-5 col-md-4 social">
       <ul v-for="socialNetwork in socialNetworks">
         <li>
-          ۰۲۱۶۶۴۱۵۸۹۶
+          ۰۲۱۸۸۷۳۸۷۳
         </li>
         <li>
           <a href="tel:02188523686"><i class="fa fa-phone" aria-hidden="true"></i></a>
@@ -192,9 +192,9 @@
             <h3>آدرس</h3>
             <p>{{ address.address }}</p>
           </div>
-          <div class="col-lg-3 col-sm-4 phone" v-for="phone in phones">
+          <div class="col-lg-3 col-sm-4 phone" >
             <h3>تلفن</h3>
-            <p>{{ phone.phone }}</p>
+            <p v-for="phone in phones">{{ phone.phone }}</p>
             <p>araz@info.com</p>
           </div>
           <div class="col-lg-3 col-sm-4 hours">

@@ -16,7 +16,7 @@
   <div class="quote col-sm-12 no-padding">
     <h1>درخواست سفارش</h1>
     <div class="container box-quote">
-      <form method="post" @submit.prevent="createRequest">
+      <form method="post" @submit.prevent="validateBeforeSubmit">
         <div class="box-1">
           <div class="col-sm-6 col-md-4 col-xs-12 order-one box1-1">
             <label for="">کشور و شهر مبدا</label>
@@ -74,15 +74,13 @@
           </div>
         </div>
       </form>
-      <div class="requ-notif"  v-bind:class="{ 'displaynotif' : requestHide }" v-text="requestCode">
 
-      </div>
     </div>
   </div>
   <div class="clearfix"></div>
   <div class="col-sm-12 no-padding services">
     <h1>خدمات ما</h1>
-    <div class="container box-services">
+    <div class="container-fluid box-services">
       <a :href="'/Service'" class="service-1 col-sm-6 col-xs-12 col-md-2" v-for="service in services" :key="service.name">
         <div class=" over-box">
           <img :src="service.image" alt="" class="image">
@@ -98,31 +96,30 @@
   <div class="col-sm-12 no-padding about">
     <h1>درباره ی ما</h1>
     <div class="container about-box">
-      <div class="col-md-3 col-sm-3">
+      <div class="col-md-3 col-sm-2">
 
       </div>
-      <div class="col-md-6 col-sm-6">
+      <div class="col-md-6 col-sm-8">
         <ul class="tabs">
           <li>
             <input type="radio" checked name="tabs" id="tab1">
-            <label for="tab1">کار ما</label>
+            <label for="tab1">پیشرو در امور حمل و نقل</label>
             <div id="tab-content1" class="tab-content animated fadeIn">
-              نان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال
+            آراز پیشگام در زمینه ارائه خدمات فرابری نوین در ایران بر اساس استانداردهای روز دنیا می باشد که با بهره گیری از مجموعه ای از متخصصین و کارشناسان مجرب صنعت حمل و نقل به طور خستگی ناپذیر در جهت اعتلا به اهداف والای این مجموعه که مهمترین آنها صداقت در انجام امور محوله در کمترین زمان ممکن و جلب رضایت مشتریان بوده در حال تلاش می باشد.
             </div>
           </li>
           <li>
             <input type="radio" name="tabs" id="tab2">
-            <label for="tab2">پسیسب</label>
+            <label for="tab2">ارتباطات گسترده</label>
             <div id="tab-content2" class="tab-content animated fadeIn">
-              ی طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی
-              دستاو
+این شرکت رابطه بسیار خوبی با نمایندگان خطوط کشتیرانی، خطوط هوایی، شرکتهای فورواردی بزرگ دنیا در ایران و سایر مقامهای محلی از جمله مقامهای بندر ، فرودگاهی، گمرگی و غیره در کشور دارد که کمک شایانی به ارائه خدماتی در خور می نماید.
             </div>
           </li>
         </ul>
         <div class="clearfix"></div>
       </div>
       <div class="clearfix"></div>
-      <div class="col-md-3 col-sm-3">
+      <div class="col-md-3 col-sm-2">
       </div>
     </div>
     <div class="clearfix"></div>
@@ -154,6 +151,26 @@
     </div>
   </div>
     <div class="clearfix"></div>
+
+    <modal v-if="showModal" @close="showModal = false">
+      <!--
+        you can use custom content here to overwrite
+        default content
+      -->
+      <!-- <h3 slot="header">custom header</h3> -->
+      <div slot="body" class="body-paragraph">
+        <p>درخواست شما ثبت گردید, لطفا منتظر تماس همکاران ما باشید</p>
+        <p  v-text="modalText"></p>
+        <p>با تشکر, کلینیک نیل</p>
+      </div>
+      <p slot="footer">
+        <button class="modal-default-button" @click="showModal=false">
+          تایید
+        </button>
+      </p>
+    </modal>
+
+
 </div>
 </template>
 
@@ -167,6 +184,9 @@ axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 Vue.component('loading-screen', {
   template: '<div id="loading"><div class="cssload-triangles"><div class="cssload-tri cssload-invert"></div><div class="cssload-tri cssload-invert"></div><div class="cssload-tri"></div><div class="cssload-tri cssload-invert"></div><div class="cssload-tri cssload-invert"></div><div class="cssload-tri"></div><div class="cssload-tri cssload-invert"></div><div class="cssload-tri"></div><div class="cssload-tri cssload-invert"></div></div></div>'
+})
+Vue.component('modal', {
+  template: '#modal-template'
 })
 export default {
   components: {
@@ -210,8 +230,7 @@ export default {
         recipient: '',
         method: ''
       },
-      requestHide: true,
-      requestCode: ''
+      showModal: false
     }
   },
   head: {
@@ -271,14 +290,18 @@ export default {
             recipient: '',
             method: ''
           }
-          self.requestHide = false
-          self.requestCode = 'نوبت شما ثبت شده منتظر تماس باشید. شماره پیگیری شما:' + (response.data.id + 1000)
+          self.$validator.pause()
+          setTimeout(() => {
+            self.$validator.resume()
+          }, 6000)
+          self.modalText = 'کد پیگیری شما: ' + (response.data.id + 1000)
+          self.showModal = true
         })
     },
     validateBeforeSubmit () {
       this.$validator.validateAll().then((result) => {
         if (result) {
-          this.addComment()
+          this.createRequest()
           return
         }
 
